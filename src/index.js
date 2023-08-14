@@ -50,7 +50,7 @@ async function fetchGallery() {
     Notiflix.Notify.warning(
       "We're sorry, but you've reached the end of search results."
     );
-  } else if (isShow < totalHits && this.page !== 1) {
+  } else if (isShow < 41) {
     elements.btnLoadMore.classList.remove('is-hidden');
     Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
   }
