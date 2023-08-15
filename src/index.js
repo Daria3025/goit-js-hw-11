@@ -11,7 +11,10 @@ const elements = {
   btnLoadMore: document.querySelector('.load-more'),
 };
 
+
+
 let isShow = 0;
+let galleryBox = new SimpleLightbox('.gallery a');
 
 elements.form.addEventListener('submit', handlerSearchImg);
 elements.btnLoadMore.addEventListener('click', handlerBtnLoadMoreClick);
@@ -32,6 +35,7 @@ function handlerSearchImg(evt) {
     return;
   }
   fetchGallery();
+
 }
 
 async function fetchGallery() {
@@ -55,13 +59,10 @@ async function fetchGallery() {
     Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
   }
   elements.gallery.insertAdjacentHTML('beforeend', createMarkup(hits));
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionDelay: 250,
-  });
-  lightbox.refresh();
+  galleryBox.refresh();
 }
 function handlerBtnLoadMoreClick() {
   pixabayApiInstance.incrementPage();
   fetchGallery();
+
 }
